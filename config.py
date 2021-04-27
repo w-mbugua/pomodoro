@@ -1,7 +1,8 @@
 import os
 
 class Config:
-    SECRET_KEY = os.environ.get('SECRET_KEY')
+    SECRET_KEY =  '79537d00f4834892986f09a100aa1edf'
+
 
 class ProdConfig(Config):
     pass

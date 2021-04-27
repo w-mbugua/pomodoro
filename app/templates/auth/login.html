@@ -1,0 +1,19 @@
+{% extends 'base.html'%}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block content %}
+<div class="container"> 
+    <div class="row">
+      <div class= "col-md-2"> </div>
+      <div class="col-md-8">
+      <!--Flash message -->
+      
+      <!-- Login form -->
+      {{wtf.quick_form(login_form)}}
+      <p> Don't have an account? <a href=#>Sign up here</a></p>
+     </div>
+     <div clas="col-md-2"> </div>
+    </div>
+</div>
+
+{% endblock%}
