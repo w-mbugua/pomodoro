@@ -6,7 +6,7 @@ from . import auth
 from .. import db
 
 
-@auth.route('/login',methods=['GET','POST'])
+@auth.route('/login')
 def login():
     login_form = LoginForm()
     if login_form.validate_on_submit():
@@ -22,8 +22,6 @@ def login():
     return render_template('auth/login.html',login_form = login_form,title=title)
 
 
-
-
 @auth.route('/register', methods = ['GET', 'POST'])
 def register():
     form = RegistrationForm()
@@ -32,8 +30,8 @@ def register():
         db.session.add(user)
         db.session.commit()
         return redirect(url_for('auth.login'))
-        title = "New Account"
-    return render_template('auth/register.html', title = 'Register', form = form)
+    title = "New Account"
+    return render_template('auth/register.html', title = title, form = form)
 
 
 
