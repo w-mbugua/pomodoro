@@ -5,3 +5,4 @@ from . import main
 def index():
     title = 'Home Page'
     return render_template('index.html', title = title)
+    
