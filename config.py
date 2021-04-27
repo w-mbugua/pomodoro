@@ -1,10 +1,13 @@
 import os
 
 class Config:
-    SECRET_KEY =  '79537d00f4834892986f09a100aa1edf'
-
+    SECRET_KEY = '6a5b826c18f5db76e78adf63ecd0af76'
+    
 
 class ProdConfig(Config):
+    pass
+
+class TestConfig(Config):
     pass
 
 class DevConfig(Config):
@@ -12,5 +15,6 @@ class DevConfig(Config):
 
 config_options = {
     'development': DevConfig,
-    'production': ProdConfig, 
+    'production': ProdConfig,
+    'test': TestConfig
 }
