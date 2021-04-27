@@ -1,8 +1,9 @@
 import os
 
 class Config:
-    SECRET_KEY = '6a5b826c18f5db76e78adf63ecd0af76'
-    
+    SECRET_KEY = os.environ.get('SECRET_KEY')
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://joey:alchemist007@localhost/pomodoro'
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 class ProdConfig(Config):
     pass

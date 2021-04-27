@@ -10,6 +10,7 @@ class User(UserMixin,db.Model):
   username = db.Column(db.String(255), index=True)
   email = db.Column(db.String(255), unique=True, index=True)
   pass_secure = db.Column(db.String(255))
+  timer = db.relationship('Timer', backref ='user', lazy = 'dynamic')
 
   @property
   def password(self):
@@ -30,4 +31,15 @@ class User(UserMixin,db.Model):
 
   def __repr__(self):
         return f'User {self.username}'
+
+class Timer(db.Model):
+    __tablename__ = 'timers'
+    id = db.Column(db.Integer,primary_key = True)
+    title = db.Column(db.String(255))
+    timer_length = db.Column(db.Integer)
+    break_length = db.Column(db.Integer)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+
+    def __repr__(self):
+        return f'User {self.name}'
 

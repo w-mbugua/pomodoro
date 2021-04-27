@@ -6,3 +6,4 @@ from flask_login import login_required
 def index():
     title = 'Home Page'
     return render_template('index.html', title = title)
+    
