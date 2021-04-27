@@ -14,7 +14,7 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/"> Pomodo.ro </a>
+                <a class="navbar-brand" href="/"> Pomodoro </a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -22,12 +22,12 @@
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
-              
-                  <li><a href="#">Profile</a></li>
-                  <li><a href="#">Sign out</a></li>
+                  {% if current_user.is_authenticated %}
                  
+                  <li><a href="{{url_for('auth.logout')}}">Sign out</a></li>
+                  {% else %}
                   <li><a href="{{url_for('auth.login')}}">Sign in</a></li>
-               
+                  {%endif%}
                 </ul>
             </div>
 
