@@ -1,6 +1,8 @@
 {% extends 'base.html'%}
 {% block content %}
-<h1>Welcome to the Pomodoro app!</h1>
-<p>Create a pomodoro <a href="{{url_for('main.create_timer')}}">here</a></p>
-<p>See your pomodoros<a href="#">here</a></p>
+<div class="col-md-8">
+    <h1>Welcome to the Pomodoro app!</h1>
+    <h3>Create a pomodoro <a href="{{url_for('main.create_timer')}}">here</a></h3>
+  
+</div>
 {% endblock %}
