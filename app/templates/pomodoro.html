@@ -5,11 +5,13 @@
 <div class="container">
     <div class="row">
       <div class="col-md-8">
-       <h1>Welcome!</h1>
+       <h1>Pomodoro</h1>
+        <h3>{{ current_user.username }}</h3>
+        <h5>Timer: {{ '{:02d}'.format(pomodoro.timer_length) }}</h5>
+        <small>Break for: {{ pomodoro.break_length }}</small>
+        
         <div class="border-top pt-3">
-            <small class="text-muted">
-              <a class="ml-2" href="#">Go to profile</a>
-            </small>
+       
           </div>
     
       </div>

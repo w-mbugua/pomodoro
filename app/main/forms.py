@@ -5,8 +5,7 @@ from wtforms.validators import DataRequired, Email, EqualTo,Required, Validation
 from ..models import User
 
 class PomodoroForm(FlaskForm):
-    title = StringField('Name Your Pomodoro', validators=[DataRequired()])
     intervals = IntegerField('Enter the number of pomodoros', validators=[DataRequired()])
     work = IntegerField('How long do you want to work for? (Enter Minutes)', validators=[DataRequired()])
-    breather = IntegerField('How long do you want to break for? (Enter Minutes)', validators=[DataRequired()])
+    rest = IntegerField('How long do you want to rest for? (Enter Minutes)', validators=[DataRequired()])
     submit = SubmitField('Create')
