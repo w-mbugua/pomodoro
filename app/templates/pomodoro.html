@@ -4,18 +4,55 @@
 {% block content %}
 <div class="container">
     <div class="row">
-      <div class="col-md-8">
-       <h1>Pomodoro</h1>
-        <h3>{{ current_user.username }}</h3>
-        <h5>Timer: {{ '{:02d}'.format(pomodoro.timer_length) }}</h5>
-        <small>Break for: {{ pomodoro.break_length }}</small>
-        
-        <div class="border-top pt-3">
+      <div class="col-md-3"></div>
+      <div style="text-align: center;" class="col-md-6">
+       <!-- <h1>Pomodoro</h1> -->
+        <!-- <h3>{{ current_user.username }}</h3> -->
+        <button class="btn btn-lg btn-success" id="start-button">Start</button>
        
-          </div>
+        <div style="padding: 20px; text-align: center; width: 20rem; height: 20rem; border-radius: 10rem; display: flex; align-items: center; justify-content: center; margin-left: 12em;" class="m timer">
+          <h5 style="font-size: 14em;" class="countDown">{{ pomodoro.timer_length }}</h5>
+        
+        </div>
+        <small class="ml-2">Break for: {{ pomodoro.break_length }} minutes</small>
     
       </div>
-      <div class="col-md-4"></div>
+      <div class="col-md-3"></div>
     </div>
   </div>
+{% endblock %}
+{% block scripts %}
+<script>
+  let timer = document.querySelector('.countDown')
+  // let time = timer * 60;
+  const startBtn = document.getElementById('start-button')
+  // const action = document.querySelector('.action')
+
+  // let rest_time = document.getElementById('rest')
+
+  timeLeft = timer.innerHTML * 60
+
+function updateCountDowner(){
+  setInterval(() => {
+        if(timeLeft <= 0){
+            clearInterval(rest())
+        }
+
+        let mins = Math.floor(timeLeft / 60);
+        let secs = timeLeft % 60;
+        secs = secs < 10 ? '0' + secs : secs
+        mins = mins < 10 ? '0' + mins : mins
+        timer.innerHTML = `${mins}:${secs}`
+        timeLeft -= 1
+    }, 1000)
+}
+
+startBtn.addEventListener('click', updateCountDowner)
+
+function rest(){
+  timeLeft = 0
+  startBtn.innerHTML = 'Time to rest!'
+}
+
+</script>
 {% endblock %}

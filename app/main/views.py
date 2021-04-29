@@ -20,7 +20,7 @@ def index():
 def create_timer():
     form = PomodoroForm()
     if form.validate_on_submit():
-        pomodoro = Timer(title = form.title.data, timer_length = form.work.data, break_length = form.breather.data, user = current_user)
+        pomodoro = Timer(timer_length = form.work.data, break_length = form.rest.data, user = current_user)
         db.session.add(pomodoro)
         db.session.commit()
         flash('Your pomodoro has been created!')
@@ -30,10 +30,12 @@ def create_timer():
 @main.route('/pomodoro/<int:id>')
 def timer(id):
     pomodoro = Timer.query.get_or_404(id)
+    return render_template('pomodoro.html', title = 'My Pomodoro', pomodoro = pomodoro)
 
-    return render_template('pomodoro.html', title = 'My Pomodoro', pomodoro = pomodoro, timer = timer)
+@main.route('/playground')
+def play():
+    return render_template('main.html')
 
-@main.route('/user/<name>')
-def profile(name):
-    pass
+
+    
 
